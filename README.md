@@ -1,4 +1,4 @@
-# Design Patterns em Python/Django - Foco II
+# Design Patterns em Python/Django 
 
 Este repositório documenta a implementação de três padrões de projeto essenciais, escolhidos um de cada categoria (Criacional, Estrutural e Comportamental), com foco na aplicabilidade em projetos **Python** e no *framework* **Django**.
 
