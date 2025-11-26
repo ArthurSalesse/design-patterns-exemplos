@@ -1,61 +1,93 @@
-# Design Patterns em Python/Django
+# Design Patterns em Python/Django - Foco II
 
 Este repositório documenta a implementação de três padrões de projeto essenciais, escolhidos um de cada categoria (Criacional, Estrutural e Comportamental), com foco na aplicabilidade em projetos **Python** e no *framework* **Django**.
 
-Os códigos de exemplo estão na pasta `design_patterns/`.
+Os códigos de exemplo e a implementação funcional inspirada em cenários reais estão na pasta `design_patterns/`.
 
 ---
 
 ## Padrões de Projeto Documentados
 
-| Categoria | Padrão | Descrição Breve |
-| :---: | :---: | :--- |
-| **Criacional** | **Singleton** | Garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a ela. |
-| **Estrutural** | **Adapter** | Permite que objetos com interfaces incompatíveis trabalhem juntos, atuando como um tradutor. |
-| **Comportamental** | **Strategy** | Define uma família de algoritmos e os torna intercambiáveis, delegando a lógica para classes específicas. |
+| Categoria | Padrão | Propósito | Referência (Refactoring Guru) |
+| :---: | :---: | :--- | :--- |
+| **Criacional** | **Prototype** | Cria objetos por meio da cópia de um objeto existente, evitando acoplamento. | [Prototype](https://refactoring.guru/pt-br/design-patterns/prototype) |
+| **Estrutural** | **Composite** | Compõe objetos em estruturas de árvore e permite que os clientes tratem objetos individuais e composições de objetos de forma uniforme. | [Composite](https://refactoring.guru/pt-br/design-patterns/composite) |
+| **Comportamental** | **Visitor** | Permite adicionar **novas operações** a hierarquias de objetos existentes sem modificar as classes desses objetos. | [Visitor](https://refactoring.guru/pt-br/design-patterns/visitor) |
 
 ---
 
-## I. Padrão Criacional: Singleton
+## I. Padrão Criacional: Prototype 
 
-O **Singleton** é usado para garantir que uma classe tenha apenas uma instância e fornecer um ponto de acesso global a ela. É ideal para gerenciar recursos compartilhados como configurações globais ou conexões de log.
+O **Prototype** (Protótipo) é um padrão criacional que permite que você crie novos objetos copiando um objeto existente, chamado de protótipo.
 
-* **Referência:** [Singleton - Refactoring Guru](https://refactoring.guru/pt-br/design-patterns/singleton)
+* **Referência:** [Prototype - Refactoring Guru](https://refactoring.guru/pt-br/design-patterns/prototype)
 
 ### Problema Resolvido
-O problema de ter múltiplas instâncias de uma classe que gerencia um recurso centralizado (como um Objeto de Configuração ou um Pool de Conexões), o que pode levar a inconsistências de dados e uso ineficiente de recursos.
+O problema de ter que re-inicializar objetos complexos com a mesma configuração várias vezes ou quando a criação de um novo objeto é custosa em termos de recursos. Evita o acoplamento ao cliente, pois ele não precisa saber a classe exata do objeto que está clonando.
 
 ### Solução
-A própria classe se encarrega de controlar a criação de instâncias. Ela oculta o construtor e expõe um método de acesso estático (`__new__` em Python) que sempre retorna a mesma instância armazenada em cache.
+A classe que se deseja clonar (o Protótipo) implementa um método de clonagem. Em Python, isso é frequentemente feito através do protocolo `copy.deepcopy()`. O cliente solicita uma cópia ao objeto protótipo em vez de usar o construtor da classe. O objeto clonado é um novo objeto com os mesmos estados do original.
 
 ### Diagrama UML Conceitual
 
 
+[Image of the Prototype design pattern UML diagram]
 
-### Exemplo de Código (no `design_patterns/creational/singleton_example.py`)
 
-A implementação em Python utiliza o método mágico `__new__` para controlar a criação da instância e garantir que apenas uma seja criada.
+### Exemplo de Código (no `design_patterns/creational/prototype_example.py`)
 
-```python
-# O código de exemplo em Python/Django se encontra no arquivo:
-# design_patterns/creational/singleton_example.py
+**Exemplo Funcional:** Clonagem de Objetos de Tarefa (*Tasks*) em um Sistema de Gerenciamento de Projetos, onde a clonagem é usada para criar tarefas baseadas em um modelo pré-configurado.
 
-class GlobalConfigurationManager:
-    """O Singleton para gerenciar um conjunto de configurações globais."""
-    _instance = None
-    
-    def __new__(cls):
-        if cls._instance is None:
-            # Garante que a inicialização (init) ocorra apenas na primeira vez
-            cls._instance = super(GlobalConfigurationManager, cls).__new__(cls)
-            cls._instance.settings = {}
-            print("Configuração Global inicializada.")
-        return cls._instance
 
-    # ... (Métodos de negócio como load_settings, get_setting)
 
-# Demonstração: config1 e config2 são o mesmo objeto
-config1 = GlobalConfigurationManager()
-config2 = GlobalConfigurationManager()
-# Saída: São o mesmo objeto? True
-print(f"São o mesmo objeto? {config1 is config2}")
+## II. Padrão Estrutural:  Composite
+
+O **Composite** é um padrão de projeto estrutural que permite que você componha objetos em estruturas de árvores e então trabalhe com essas estruturas como se elas fossem objetos individuais.
+
+* **Referência:** [Composite - Refactoring Guru](https://refactoring.guru/pt-br/design-patterns/composite)
+
+### Problema Resolvido
+Usar o padrão Composite faz sentido apenas quando o modelo central de sua aplicação pode ser representada como uma árvore.
+
+A dificuldade em gerenciar estruturas hierárquicas (como árvores, menus, ou organogramas) onde você tem objetos simples (Folhas) e contêineres de objetos (Compostos). O código cliente deve ser capaz de interagir com qualquer um deles sem saber se está lidando com um grupo ou um item único.
+
+### Solução
+
+Define-se uma interface comum (Componente) implementada tanto por objetos simples (que não têm filhos, Folhas) quanto por objetos compostos (que podem ter filhos, Compostos). Os Compostos delegam o trabalho aos seus filhos e agregam os resultados, permitindo que o cliente trate toda a estrutura de forma uniforme usando a interface Componente.
+
+### Diagrama UML Conceitual
+
+
+[Image of the Prototype design pattern UML diagram]
+
+
+### Exemplo de Código (no `design_patterns/Estrutural/composite_example.py`)
+
+**Exemplo Funcional:** Clonagem de Objetos de Tarefa (*Tasks*) em um Sistema de Gerenciamento de Projetos, onde a clonagem é usada para criar tarefas baseadas em um modelo pré-configurado.
+
+
+
+## III. Padrão Comportamental:  Vistor
+
+O Visitor (Visitante) é um padrão comportamental que permite que você separe algoritmos da estrutura de objetos em que eles operam.
+
+* **Referência:** [Composite - Refactoring Guru](https://refactoring.guru/pt-br/design-patterns/visitor)
+
+### Problema Resolvido
+
+A necessidade de adicionar novas operações (comportamentos) a classes de objetos existentes (Elementos) sem ter que modificar o código-fonte dessas classes. Isso evita a poluição das classes Elemento com operações que mudam frequentemente.
+
+### Solução
+
+Cria-se uma interface Visitor com métodos visit para cada tipo de Elemento concreto. As classes de Elemento, por sua vez, implementam um método accept que aceita o Visitor e o direciona para o método visit correto. O comportamento do sistema é estendido adicionando-se novos Visitors, e não alterando os Elementos.usando a interface Componente.
+
+### Diagrama UML Conceitual
+
+
+[Image of the Prototype design pattern UML diagram]
+
+
+### Exemplo de Código (no `design_patterns/Estrutural/visitor_example.py`)
+
+**Exemplo Funcional:** Adicionar Operações de Relatório (Cálculo de Imposto) a diferentes tipos de Pedidos (Orders).
+
