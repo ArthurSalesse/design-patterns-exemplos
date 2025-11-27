@@ -34,7 +34,7 @@ A classe que se deseja clonar (o Protótipo) implementa um método de clonagem. 
 [Image of the Prototype design pattern UML diagram]
 
 
-### Exemplo de Código (no `design_patterns/creational/prototype_example.py`)
+### Exemplo de Código (no `Padroões_de_projeto/criacional/prototype_example.py`)
 
 **Exemplo Funcional:** Clonagem de Objetos de Tarefa (*Tasks*) em um Sistema de Gerenciamento de Projetos, onde a clonagem é usada para criar tarefas baseadas em um modelo pré-configurado.
 
@@ -61,13 +61,13 @@ Define-se uma interface comum (Componente) implementada tanto por objetos simple
 [Image of the Prototype design pattern UML diagram]
 
 
-### Exemplo de Código (no `design_patterns/Estrutural/composite_example.py`)
+### Exemplo de Código (no `Padroões_de_projeto/Estrutural/composite_example.py`)
 
 **Exemplo Funcional:** Clonagem de Objetos de Tarefa (*Tasks*) em um Sistema de Gerenciamento de Projetos, onde a clonagem é usada para criar tarefas baseadas em um modelo pré-configurado.
 
 
 
-## III. Padrão Comportamental:  Vistor
+## III. Padrão Comportamental:  Visitor
 
 O Visitor (Visitante) é um padrão comportamental que permite que você separe algoritmos da estrutura de objetos em que eles operam.
 
@@ -87,7 +87,7 @@ Cria-se uma interface Visitor com métodos visit para cada tipo de Elemento conc
 [Image of the Prototype design pattern UML diagram]
 
 
-### Exemplo de Código (no `design_patterns/Estrutural/visitor_example.py`)
+### Exemplo de Código (no `Padroões_de_projeto/Comportamental/visitor_example.py`)
 
 **Exemplo Funcional:** Adicionar Operações de Relatório (Cálculo de Imposto) a diferentes tipos de Pedidos (Orders).
 
