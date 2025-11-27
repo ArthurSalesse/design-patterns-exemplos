@@ -30,9 +30,7 @@ A classe que se deseja clonar (o Protótipo) implementa um método de clonagem. 
 
 ### Diagrama UML Conceitual
 
-
-![](imagens/prototype.png)
-
+<img width="578" height="462" alt="prototype" src="https://github.com/user-attachments/assets/7a02d422-25c8-4723-8f0a-da3210b5167d" />
 
 ### Exemplo de Código (no `Padroões_de_projeto/criacional/prototype_example.py`)
 
@@ -57,9 +55,7 @@ Define-se uma interface comum (Componente) implementada tanto por objetos simple
 
 ### Diagrama UML Conceitual
 
-
-![](imagens/composite.png)
-
+<img width="696" height="641" alt="composite" src="https://github.com/user-attachments/assets/7f025a86-469d-46b0-bd5a-2c91cf2b16a8" />
 
 ### Exemplo de Código (no `Padroões_de_projeto/Estrutural/composite_example.py`)
 
@@ -83,8 +79,9 @@ Cria-se uma interface Visitor com métodos visit para cada tipo de Elemento conc
 
 ### Diagrama UML Conceitual
 
+<img width="747" height="747" alt="visitor" src="https://github.com/user-attachments/assets/d55c9544-8197-4ddb-b91d-fbb61d4b89c0" />
 
-![](imagens/visitor.png)
+
 ### Exemplo de Código (no `Padroões_de_projeto/Comportamental/visitor_example.py`)
 
 **Exemplo Funcional:** Adicionar Operações de Relatório (Cálculo de Imposto) a diferentes tipos de Pedidos (Orders).
