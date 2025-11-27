@@ -2,7 +2,7 @@
 
 Este repositório documenta a implementação de três padrões de projeto essenciais, escolhidos um de cada categoria (Criacional, Estrutural e Comportamental), com foco na aplicabilidade em projetos **Python** e no *framework* **Django**.
 
-Os códigos de exemplo e a implementação funcional inspirada em cenários reais estão na pasta `dPadroões_de_projeto/`.
+Os códigos de exemplo e a implementação funcional inspirada em cenários reais estão na pasta `Padroões_de_projeto/`.
 
 ---
 
