@@ -81,9 +81,8 @@ Cria-se uma interface Visitor com métodos visit para cada tipo de Elemento conc
 
 <img width="747" height="747" alt="visitor" src="https://github.com/user-attachments/assets/d55c9544-8197-4ddb-b91d-fbb61d4b89c0" />
 
-## Para a realização e organização desta implementção foi utilizada a LLM Google Gemini
-
 ### Exemplo de Código (no `Padroões_de_projeto/Comportamental/visitor_example.py`)
 
 **Exemplo Funcional:** Adicionar Operações de Relatório (Cálculo de Imposto) a diferentes tipos de Pedidos (Orders).
 
+## Para a realização e organização desta implementção foi utilizada a LLM Google Gemini
